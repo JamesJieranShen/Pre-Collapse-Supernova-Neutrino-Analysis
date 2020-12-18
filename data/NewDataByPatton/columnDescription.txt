@@ -1,0 +1,45 @@
+These files contain the data for all of the times, separated by empty lines.  These is the volume integrated differential rates and emissivities.
+
+Column descriptions:
+
+
+Beta File
+
+column 1 - profile number
+
+column 2 - energy (MeV)
+
+column 3 - nuELumNum = number luminosity of nu_e (1/MeV/s)
+
+column 4 - nuEBarLumNum = number luminosity of nu_e_bar (1/MeV/s)
+
+column 5 - nuELumEnergy = energy luminosity of nu_e (1/s)
+
+column 6 - nuEBarLumEnergy = energy luminosity of nu_e_bar (1/s)
+
+
+All thermal files
+
+column 1 - profile number
+
+column 2 - energy (MeV)
+
+column 3 - nuELumNum = number luminosity of nu_e (1/s)
+
+column 4 - nuEBarLumNum = number luminosity of nu_e_bar (1/s)
+
+column 5 - nuMuLumNum = number luminosity of nu_mu/nu_tau (1/s) (total of nu_x = 2*this column)
+
+column 6 - nuMuBarLumNum = number luminosity of nu_x_bar (1/s)
+
+column 7 - nuELumEnergy = energy luminosity of nu_e (1/MeV/s)
+
+column 8 - nuEBarLumEnergy = energy luminosity of nu_e_bar (1/MeV/s)
+
+column 9 - nuELumEnergy = energy luminosity of nu_x (1/MeV/s)
+
+column 10 - nuEBarLumEnergy = energy luminosity of nu_x_bar (1/MeV/s)
+
+
+
+
