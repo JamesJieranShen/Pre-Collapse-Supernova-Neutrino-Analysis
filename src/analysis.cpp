@@ -1,3 +1,5 @@
+//TODO: FIX DEPENDENCIES
+
 // load C++ standard libraries
 #include <iostream>
 #include <string>
@@ -22,14 +24,16 @@
 
 
 // defining some universal values
-double katoWidth = 0.05; // [MeV] step width of simulation results
-double snowWidth = 0.2;  // [MeV] step width expected by SNOwGLoBES
-double snowOutFactor = 0.5; // snowglobes output is per 0.5 MeV
+const double katoWidth = 0.05; // [MeV] step width of simulation results
+const double snowWidth = 0.2;  // [MeV] step width expected by SNOwGLoBES
+const double snowOutFactor = 0.5; // snowglobes output is per 0.5 MeV
 
-double parsec = 3.0857 * pow(10,16); //one parsec is approximately 3.0857e16 meters
-double distance = 200;  // assuming a distance of 200 parsec to the SN
-double surface =  4 * M_PI * pow( (distance * parsec), 2);
-double solidAngle = pow( 0.01,2) / surface; // square meter to square cm
+const double parsec = 3.0857 * pow(10,16); //one parsec is approximately 3.0857e16 meters
+const double distance = 200;  // assuming a distance of 200 parsec to the SN
+const double surface =  4 * M_PI * pow( (distance * parsec), 2);
+const double solidAngle = pow( 0.01,2) / surface; // square meter to square cm
+
+const char * SNOWGLOBE_PATH = secure_getenv("SNOWGLOBES");
 
 int main()
 {
@@ -154,7 +158,7 @@ for ( int k = 0; k < thl; k++ )
   ******************************/
   
   // run SNOwGLoBES for DUNE 
-  chdir("../../snowglobes");
+  chdir(SNOWGLOBE_PATH);
   std::system(effic.c_str());
   std::system("perl run_pinched_allflav_argon.pl ../analysis_pre_collapse_forDune/data/GLoBES_fluxes/kato15sol/ ../analysis_pre_collapse_forDune/output/SNOwGLoBES/DUNE/");
   chdir("../analysis_pre_collapse_forDune/src/");
@@ -287,7 +291,7 @@ for ( int k = 0; k < thl; k++ )
   ******************************/
   
   // run SNOwGLoBES for JUNO 
-  chdir("../../snowglobes");
+  chdir(SNOWGLOBE_PATH);
   std::system(effic.c_str());
   std::system("perl run_pinched_allflav_liqscint.pl ../analysis_pre_collapse_forDune/data/GLoBES_fluxes/kato15sol ../analysis_pre_collapse_forDune/output/SNOwGLoBES/JUNO");
   chdir("../analysis_pre_collapse_forDune/src/");
