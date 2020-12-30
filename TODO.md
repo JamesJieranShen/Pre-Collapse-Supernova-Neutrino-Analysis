@@ -2,7 +2,7 @@
 
 James Shen <js913@duke.edu>
 
-- Fix dependencies in analysis.cpp
+- Ensure plots are the same as the plots in the presentation
 - Refactor detector data models
-- Refactor constants into `include/variables.h`
+- Check data models are correct
 - Ensure Snowglobe compatibility

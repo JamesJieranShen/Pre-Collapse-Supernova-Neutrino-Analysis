@@ -1,13 +1,6 @@
 #include "../include/createGlobesFile.h"
+#include "../include/variables.h"
 #include <iostream>
-
-extern double katoWidth;// = 0.05; // [MeV] step width of simulation results
-extern double snowWidth;// = 0.2;  // [MeV] step width expected by SNOwGLoBES
-
-extern double parsec;// = 3.0857 * pow(10,16); //one parsec is approximately 3.0857e16 meters
-extern double distance;// = 200;  // assuming a distance of 200 parsec to the SN
-extern double surface;// =  4 * M_PI * pow( (distance * parsec), 2);
-extern double solidAngle;// = pow( 0.01,2) / surface; // square meter to square cm
 
 
 void createGlobesFile(const sndata &data, const std::string & writePath, const int timeBinNum, const double timeLow, const double timeUp)

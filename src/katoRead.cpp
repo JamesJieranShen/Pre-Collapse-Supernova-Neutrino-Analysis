@@ -75,7 +75,7 @@ sndata katoRead(const std::string & path) // expects the path to pre_collapse_..
 
   fscanf(lightcurve_nux, "%*[^\n]\n"); // skips the first line of the lightcurve file
   counter = 0;
-  while(fscanf(lightcurve_nux, "%i %lG %* %* %lG %lG %* %lG %lG",&_id, &_time, &_Eamu, &_Number_mu, &_Emu)==5)
+  while(fscanf(lightcurve_nux, "%i %lG %* %* %lG %lG %* %lG %lG",&_id, &_time, &_Eamu, &_Number_mu, &_Emu)==5) // FIXME: This seems wrong. There are only 8 fields
     {
       if ( data.id[counter] != _id )
 	perror( "inconsistent lightcurve files - id at nux");

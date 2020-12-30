@@ -36,3 +36,6 @@
 
 # IDE configs
 .vscode/*
+
+# OUTPUT files
+output/*
