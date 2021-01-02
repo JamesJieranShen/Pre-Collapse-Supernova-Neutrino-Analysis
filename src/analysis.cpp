@@ -159,7 +159,7 @@ int main()
         // run SNOwGLoBES for DUNE
         chdir(SNOWGLOBE_PATH.c_str());
         std::system(effic.c_str());
-        std::system(("perl run_pinched_allflav_argon.pl " + PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/DUNE/").c_str());
+        std::system(("perl run_pinched_allflav_argon.pl " + PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/DUNE").c_str());
         chdir((PROJ_PATH + "/src/").c_str());
 
         std::cout << "DUNE normal ordering:" << std::endl;
