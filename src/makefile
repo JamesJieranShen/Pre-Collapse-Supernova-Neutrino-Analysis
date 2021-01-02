@@ -13,7 +13,7 @@ _OBJ_HIST = analysis.o makeHist.o katoRead.o katoReadGLoBES.o spectrumRead.o Two
 OBJ_HIST = $(patsubst %,$(ODIR)/%,$(_OBJ_HIST))
 
 analysis: $(OBJ_HIST) # default
-	g++ -g -o $@.o $^  $(CFLAGS) `root-config --glibs --libs`
+	g++ -o $@.o $^  $(CFLAGS) `root-config --glibs --libs`
 
 $(ODIR)/%.o: %.cpp $(DEPS_HIST)
 	mkdir -p $(ODIR);
