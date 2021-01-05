@@ -1,0 +1,57 @@
+# Note: This is a detailed diff between a clean install of snowglobes and the
+# version of snowglobes used for the pre-collapese neutrino analysis project.
+# All files listed will require installation before the project can ba ran.
+# Only differences in code and data files are shown.
+# Jamse Shen
+< backgrounds/bg_chan_ar17kt.dat
+#FIXME: The effic/ diffs may be bogus
+< effic/effic_nc_nue_C12_scint50kt.dat
+< effic/effic_nc_numubar_C12_scint50kt.dat
+< effic/effic_nc_numu_C12_scint50kt.dat
+< effic/effic_nc_nutaubar_C12_scint50kt.dat
+< effic/effic_nc_nutau_C12_scint50kt.dat
+< effic/effic_nue_Ar40_ar17kt.dat
+< effic/effic_nuebar_Ar40_ar17kt.dat
+< effic/effic_nuebar_C12_scint50kt.dat
+< effic/effic_nuebar_e_ar17kt.dat
+< effic/effic_nuebar_e_scint50kt.dat
+< effic/effic_nue_C12_scint50kt.dat
+< effic/effic_nue_e_ar17kt.dat
+< effic/effic_nue_e_scint50kt.dat
+< effic/effic_numubar_e_ar17kt.dat
+< effic/effic_numubar_e_scint50kt.dat
+< effic/effic_numu_e_ar17kt.dat
+< effic/effic_numu_e_scint50kt.dat
+< effic/effic_nutaubar_e_ar17kt.dat
+< effic/effic_nutaubar_e_scint50kt.dat
+< effic/effic_nutau_e_ar17kt.dat
+< effic/effic_nutau_e_scint50kt.dat
+< effic/test.txt
+< fluxes/kato7100.dat
+< fluxes/oscillate_flux
+< fluxes/oscillate_flux.C
+< fluxes/pinched.C
+< smear/smear_bg_chan_ar17kt.dat
+< smear/smear_ibd_scint50kt.dat
+< smear/smear_nc_nuebar_C12_scint50kt.dat
+< smear/smear_nc_nue_C12_scint50kt.dat
+< smear/smear_nc_numubar_C12_scint50kt.dat
+< smear/smear_nc_numu_C12_scint50kt.dat
+< smear/smear_nc_nutaubar_C12_scint50kt.dat
+< smear/smear_nc_nutau_C12_scint50kt.dat
+< smear/smear_nue_Ar40_ar17kt.dat
+< smear/smear_nuebar_Ar40_ar17kt.dat
+< smear/smear_nuebar_C12_scint50kt.dat
+< smear/smear_nuebar_e_ar17kt.dat
+< smear/smear_nuebar_e_scint50kt.dat
+< smear/smear_nue_C12_scint50kt.dat
+< smear/smear_nue_e_ar17kt.dat
+< smear/smear_nue_e_scint50kt.dat
+< smear/smear_numubar_e_ar17kt.dat
+< smear/smear_numubar_e_scint50kt.dat
+< smear/smear_numu_e_ar17kt.dat
+< smear/smear_numu_e_scint50kt.dat
+< smear/smear_nutaubar_e_ar17kt.dat
+< smear/smear_nutaubar_e_scint50kt.dat
+< smear/smear_nutau_e_ar17kt.dat
+< smear/smear_nutau_e_scint50kt.dat
