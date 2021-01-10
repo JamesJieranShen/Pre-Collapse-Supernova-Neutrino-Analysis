@@ -6,6 +6,6 @@ sys_snowglobes = $SNOWGLOBES
 export SNOWGLOBES=$legacy_snowglobes
 
 make analysis
-gdb -q analysis.o
+./analysis.o
 
 export SNOWGLOBES=$sys_snowglobes
