@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <string>
 void drawbg(std::string filepath, std::string detector, std::string ordering, double sigmaUp, bool include_bg)
 {
 // array of backgrounds [1/s]
@@ -25,15 +26,20 @@ for ( int i = 0; i < thl; i++ )
   std::stringstream ssi;
   ssi << thresholds[i];
   
+  std::string thstring;
+  std::string bgstring;
+  std::string savepath;
+
+
   for ( int j = 1; j < bgl; j++ )
   {      
     std::stringstream ssj;
     ssj << std::setprecision(0) << std::fixed << backgrounds[j];
     
-    std::string thstring = ssi.str();
-    std::string bgstring = ssj.str();
+    thstring = ssi.str();
+    bgstring = ssj.str();
     
-    std::string savepath = std::string("../output/histograms/background/") + detector + std::string("_") + ordering + std::string("_th") + thstring ;
+    savepath = std::string("../output/histograms/background/") + detector + std::string("_") + ordering + std::string("_th") + thstring ;
     if ( include_bg ) savepath = savepath + std::string("_withbg");
     savepath = savepath + std::string(".png");
     
@@ -46,8 +52,8 @@ for ( int i = 0; i < thl; i++ )
     
     canvas->cd(j);
     
-    TH1D  * hist = file.Get(histname.c_str());
-    TH1D  * bg = file.Get(bgname.c_str());
+    TH1D * hist = (TH1D*)file.Get(histname.c_str());
+    TH1D * bg   = (TH1D*)file.Get(bgname.c_str());
 
     hist->SetStats(0);
     

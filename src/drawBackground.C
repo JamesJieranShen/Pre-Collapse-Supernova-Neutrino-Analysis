@@ -15,9 +15,9 @@ for ( int i = 0; i < 3; i++ )
   for ( int j = 0; j < 2; j++ )
   {
     std::string filepath = std::string("../output/ROOT/") + detectors[i] + std::string("_") + ordering[j] + std::string(".root");
-    gROOT->ProcessLine(".x drawbg.C(filepath, detectors[i], ordering[j], sigmaUp[i][j], true)");      
-    gROOT->ProcessLine(".x drawbg.C(filepath, detectors[i], ordering[j], sigmaUp[i][j], false)");      
-    gROOT->ProcessLine(".x bgdist.C(filepath, detectors[i], ordering[j], 10.)");      
+    gROOT->ProcessLine((std::string(".x drawbg.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", " + sigmaUp[i][j]+", true)").Data());
+    gROOT->ProcessLine((std::string(".x drawbg.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", "+ sigmaUp[i][j]+", false)").Data());
+    gROOT->ProcessLine((std::string(".x bgdist.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", 10.)").c_str());      
   }
 }
 }

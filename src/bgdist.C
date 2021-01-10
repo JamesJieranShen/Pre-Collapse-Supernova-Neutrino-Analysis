@@ -69,8 +69,8 @@ for ( int i = 0; i < thl; i++ )
     
     std::string histtitle = detector + std::string(" ") + ordering + std::string(" ordering event rates, threshold: ") + ssi.str() + std::string(" MeV, background: ") + ssj.str() + std::string(" Hz");
 
-    TH1D  * hist = file.Get(histname.c_str());
-    TH1D  * bg = file.Get(bgname.c_str());
+    TH1D * hist = (TH1D*)file.Get(histname.c_str());
+    TH1D * bg   = (TH1D*)file.Get(bgname.c_str());
       
     int limitbin = hist->FindBin( -log10(interval) );
     integralinterval = hist->GetBinLowEdge(limitbin);
