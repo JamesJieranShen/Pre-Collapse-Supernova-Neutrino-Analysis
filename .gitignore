@@ -38,3 +38,7 @@
 .vscode/*
 
 # OUTPUT files
+/output/*
+#... but not histograms
+!/output/histograms
+!/output/histograms/*
