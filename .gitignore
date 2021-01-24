@@ -39,6 +39,7 @@
 
 # OUTPUT files
 /output/*
-#... but not histograms
+#... but not histograms and makefiles
 !/output/histograms
 !/output/histograms/*
+!/output/Makefile

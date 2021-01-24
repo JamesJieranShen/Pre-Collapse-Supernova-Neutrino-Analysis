@@ -20,4 +20,4 @@ $(ODIR)/%.o: %.cpp $(DEPS_HIST)
 	$(CC) -c -o $@ $< $(CFLAGS) `root-config --cflags --glibs --libs`
 
 clean:
-	rm -r $(ODIR)/*
+	rm -rf $(ODIR)/*
