@@ -1,6 +1,7 @@
 #!/bin/bash
 # Using current version of snowglobes
 
-make analysis
-./analysis.o
+make all
+cd bin
+../bin/analysis
 

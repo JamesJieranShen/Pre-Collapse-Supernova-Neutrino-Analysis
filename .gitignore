@@ -37,6 +37,9 @@
 # IDE configs
 .vscode/*
 
+# Binaries
+/bin/*
+
 # OUTPUT files
 /output/*
 #... but not histograms and makefiles
