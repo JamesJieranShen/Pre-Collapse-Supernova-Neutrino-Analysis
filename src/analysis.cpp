@@ -291,8 +291,7 @@ int main()
         // run SNOwGLoBES for JUNO
         chdir(SNOWGLOBE_PATH.c_str());
         std::system(effic.c_str());
-        std::system(("perl run_pinched_allflav_argon.pl " + PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/DUNE/").c_str());
-        std::system(("perl run_pinched_allflav_liqscint.pl "+ PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/DUNE/").c_str());
+        std::system(("perl run_pinched_allflav_liqscint.pl "+ PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/JUNO/").c_str());
         chdir((PROJ_PATH + "/src/").c_str());
 
         std::cout << "JUNO normal ordering:" << std::endl;
@@ -458,7 +457,7 @@ int main()
         // run SNOwGLoBES for Hyper-K
         chdir(SNOWGLOBE_PATH.c_str());
         std::system(effic.c_str());
-        std::system(("perl run_pinched_allflav_water.pl "+ PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/DUNE/").c_str());
+        std::system(("perl run_pinched_allflav_water.pl "+ PROJ_PATH + "/data/GLoBES_fluxes/kato15sol/ " + PROJ_PATH + "/output/SNOwGLoBES/HyperK/").c_str());
         chdir((PROJ_PATH + "/src/").c_str());
 
         std::cout << "Hyper-K normal ordering:" << std::endl;
