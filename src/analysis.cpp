@@ -127,14 +127,9 @@ int main()
     std::system("perl run_all_oscillations.pl kato15sol");
     chdir("../../src/");
 
-    /********************/
-    /***SMEARED RATES****/
-    /********************/
 
-    /******************************
-  ************DUNE***************
-  ******************************/
-
+    /*********DUNE******/
+    
     std::system("rm ../output/ROOT/DUNE_normal.root");
     std::system("rm ../output/ROOT/DUNE_inverted.root");
 
@@ -152,9 +147,7 @@ int main()
         ss << std::setprecision(0) << std::fixed << thresholds[k];
         std::string effic = "perl editeffic.pl " + ss.str();
 
-        /******************************
-  *****DUNE*****normal***********
-  ******************************/
+        //-----------------DUNE NORMAL----------------------------------
 
         // run SNOwGLoBES for DUNE
         chdir(SNOWGLOBE_PATH.c_str());
@@ -211,9 +204,7 @@ int main()
 
         std::cout << "*********************************" << std::endl;
 
-        /******************************
-  *****DUNE*****inverted*********
-  ******************************/
+        //****DUNE*****inverted*******
 
         std::cout << "DUNE inverted ordering:" << std::endl;
 
@@ -284,9 +275,7 @@ int main()
         ss << std::setprecision(0) << std::fixed << thresholds[k];
         std::string effic = std::string("perl editeffic.pl ") + ss.str();
 
-        /******************************
-  *****JUNO*****normal***********
-  ******************************/
+        // JUNO normal
 
         // run SNOwGLoBES for JUNO
         chdir(SNOWGLOBE_PATH.c_str());
@@ -360,9 +349,7 @@ int main()
 
         std::cout << "*********************************" << std::endl;
 
-        /******************************
-  *****JUNO*****inverted*********
-  ******************************/
+        // JUNO INVERTED
 
         std::cout << "JUNO inverted ordering:" << std::endl;
 
@@ -450,9 +437,7 @@ int main()
         ss << std::setprecision(0) << std::fixed << thresholds[k];
         std::string effic = "perl editeffic.pl " + ss.str();
 
-        /******************************
-  *****HYPER-K***normal*********
-  ******************************/
+        // HYPERK NORMAL
 
         // run SNOwGLoBES for Hyper-K
         chdir(SNOWGLOBE_PATH.c_str());
@@ -524,9 +509,7 @@ int main()
 
         std::cout << "*********************************" << std::endl;
 
-        /******************************
-  *****HYPER-K**inverted*********
-  ******************************/
+        // HYPERK NORMAL
 
         std::cout << "Hyper-K inverted ordering:" << std::endl;
 
