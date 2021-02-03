@@ -1,6 +1,6 @@
 #include <iomanip>
 #include <string>
-void drawbg(std::string filepath, std::string detector, std::string ordering, double sigmaUp, bool include_bg)
+void drawbg(std::string filepath, std::string detector, std::string ordering, double sigmaUp, bool include_bg, double scale)
 {
     // array of backgrounds [1/s]
     const int bgl = 7;
@@ -54,6 +54,7 @@ void drawbg(std::string filepath, std::string detector, std::string ordering, do
             canvas->cd(j);
 
             TH1D *hist = (TH1D *)file.Get(histname.c_str());
+            hist->Scale(scale);
             TH1D *bg = (TH1D *)file.Get(bgname.c_str());
 
             hist->SetStats(0);

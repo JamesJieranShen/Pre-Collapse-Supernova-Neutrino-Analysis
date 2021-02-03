@@ -8,8 +8,11 @@
 #define JUNO_INVERTED_PATH "../output/ROOT/JUNO_inverted.root"
 #define HYPERK_NORMAL_PATH "../output/ROOT/HYPERK_normal.root"
 #define HYPERK_INVERTED_PATH "../output/ROOT/HYPERK_inverted.root"
+// used when scaling old configs to new ones
+#define DUNE_SCALE (40.0/17.0)
+#define JUNO_SCALE (20.0/50.0)
 
-std::vector<TH1D*> * getHists(TFile * file, const std::string* histNames, int numHists){
+std::vector<TH1D*> * getHists(TFile * file, const std::string* histNames, int numHists, double scale){
     std::vector<TH1D*> * ret = new std::vector<TH1D*>;
     for(int i = 0; i < numHists; i++){
         auto object = file->Get(histNames[i].c_str()); 
@@ -18,6 +21,7 @@ std::vector<TH1D*> * getHists(TFile * file, const std::string* histNames, int nu
             exit(1); 
         } 
         auto histo = dynamic_cast<TH1D*>(object); 
+        histo->Scale(scale);
         if (!histo) {
             cerr << "object is not a TH1D\n"; 
             exit(1); 
@@ -25,6 +29,11 @@ std::vector<TH1D*> * getHists(TFile * file, const std::string* histNames, int nu
         ret->push_back(histo);
     }
     return ret;
+}
+
+// overload method such that default scaling is 1
+std::vector<TH1D*> * getHists(TFile * file, const std::string* histNames, int numHists){
+    return getHists(file, histNames, numHists, 1.0);
 }
 
 std::vector<Color_t> color;
@@ -57,11 +66,13 @@ std::vector<std::string> label_HYPERK_inverted;
 
 
 // main macro starts here
-void drawHistograms(){
+void drawHistograms(int use_scaling){
     double DUNE_normal_integral, DUNE_inverted_integral, JUNO_normal_integral, JUNO_inverted_integral, HYPERK_normal_integral, HYPERK_inverted_integral;
     // global variables
     TGaxis::SetMaxDigits(2);
-
+    double dune_scale = use_scaling? DUNE_SCALE : 1.0;
+    double juno_scale = use_scaling? JUNO_SCALE : 1.0;
+    double hyperk_scale = 1.0; // no hyperk scale
     // 12 solar masses SN no oscillation
     
     histNames[0] = "amu_energyIntegral";
@@ -94,7 +105,7 @@ void drawHistograms(){
     histNames[3] = "es_th0_energyIntegral";
 
     file = new TFile(DUNE_NORMAL_PATH);
-    histograms_DUNE_normal = getHists(file, histNames, 4);
+    histograms_DUNE_normal = getHists(file, histNames, 4, dune_scale);
 
     /*
     path = ( "../output/histograms/15sol_DUNE_normal_sum.png");
@@ -134,7 +145,7 @@ void drawHistograms(){
     // DUNE, inverted ordering, smeared, 15 solar masses
     // same histogram names as normal ordering
     file = new TFile(DUNE_INVERTED_PATH);
-    histograms_DUNE_inverted = getHists(file, histNames, 4);
+    histograms_DUNE_inverted = getHists(file, histNames, 4, dune_scale);
 
     /*
     path = ( "../output/histograms/15sol_DUNE_inverted_sum.png");
@@ -178,7 +189,7 @@ void drawHistograms(){
     histNames[5] = "ibd_th0_energyIntegral";
 
     file = new TFile(JUNO_NORMAL_PATH);
-    histograms_JUNO_normal = getHists(file, histNames, 6);
+    histograms_JUNO_normal = getHists(file, histNames, 6, juno_scale);
 
     /*
     path = ( "../output/histograms/15sol_JUNO_normal_sum.png");
@@ -221,7 +232,7 @@ void drawHistograms(){
 
     // JUNO, inverted ordering, smeared, 15 solar masses
     file = new TFile(JUNO_INVERTED_PATH);
-    histograms_JUNO_inverted = getHists(file, histNames, 6);
+    histograms_JUNO_inverted = getHists(file, histNames, 6, juno_scale);
     /*
     path = ( "../output/histograms/15sol_JUNO_inverted_sum.png");
     gROOT->ProcessLine(".x drawSingleSnowHist.C(sum, &path)");
@@ -259,7 +270,7 @@ void drawHistograms(){
 
     // Hyper-K, normal ordering, smeared, 15 solar masses
     file = new TFile("../output/ROOT/HYPERK_normal.root");
-    histograms_HYPERK_normal = getHists(file, histNames, 6);
+    histograms_HYPERK_normal = getHists(file, histNames, 6, hyperk_scale);
     /*
     path = ( "../output/histograms/15sol_HYPERK_normal_sum.png");
     gROOT->ProcessLine(".x drawSingleSnowHist.C(sum, &path)");
@@ -298,7 +309,7 @@ void drawHistograms(){
 
     // Hyper-K, inverted ordering, smeared, 15 solar masses
     file = new TFile("../output/ROOT/HYPERK_inverted.root");
-    histograms_HYPERK_inverted = getHists(file, histNames, 6);
+    histograms_HYPERK_inverted = getHists(file, histNames, 6, hyperk_scale);
 
     /*
     path = ( "../output/histograms/15sol_HYPERK_inverted_sum.png");
@@ -350,4 +361,9 @@ void drawHistograms(){
     std::cout << "Sum normal: " << HYPERK_normal_integral << std::endl;
     std::cout << "Sum inverted: " << HYPERK_inverted_integral << std::endl;
     std::cout << std::endl;
+}
+
+void drawHistograms(){
+    // by default, dont use scaling
+    drawHistograms(0);
 }

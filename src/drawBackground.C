@@ -10,6 +10,10 @@ sigmaUp[1][1] = 20;
 sigmaUp[2][0] = 20; 
 sigmaUp[2][1] = 20;
 
+double dune_scale = 40.0/17.0;
+double juno_scale = 20.0/50.0;
+
+
 gStyle->SetOptStat ( 0 );
   gStyle->SetOptTitle ( 0 );
   gStyle->SetCanvasColor(0);
@@ -22,7 +26,7 @@ for ( int i = 0; i < 3; i++ )
   {
     std::string filepath = std::string("../output/ROOT/") + detectors[i] + std::string("_") + ordering[j] + std::string(".root");
     //gROOT->ProcessLine((std::string(".x drawbg.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", " + sigmaUp[i][j]+", true)").Data());
-    gROOT->ProcessLine((std::string(".x drawbg.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", "+ sigmaUp[i][j]+", false)").Data());
+    gROOT->ProcessLine((std::string(".x drawbg.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", "+ sigmaUp[i][j]+", false, 1.0)").Data());
     gROOT->ProcessLine((std::string(".x bgdist.C(\"")+ filepath + "\", \""+ detectors[i]+ "\", \"" +ordering[j]+"\", 10.)").c_str());      
   }
 }
